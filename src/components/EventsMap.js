@@ -13,6 +13,7 @@ L.Icon.Default.mergeOptions({
 });
 
 
+//mishh
 function EventsMap() {
   const position = [-33.45, -70.66]; // Coordenadas para centrar el mapa (Santiago)
   const eventos = [

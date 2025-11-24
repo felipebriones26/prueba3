@@ -9,7 +9,7 @@ describe('Componente FilterBar', () => {
   // Definir el mock antes de cada prueba
   beforeEach(() => {
     mockSetFilters = jasmine.createSpy('setFilters');
-  });
+  }); 
 
   // --- PRUEBA 2 (Simple) ---
   it('debe renderizarse correctamente sin errores', () => {
