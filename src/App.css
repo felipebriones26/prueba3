@@ -1,0 +1,94 @@
+/* src/App.css */
+
+/* --- Colores Base --- */
+body {
+  background-color: #121212 !important;
+  color: #f1f1f1 !important; /* Color de texto principal blanco/gris claro */
+}
+
+/* --- Enlaces --- */
+a {
+  color: #bb86fc; /* Morado claro para enlaces */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff; /* Blanco al pasar el mouse */
+}
+
+/* --- Componentes Bootstrap Oscuros --- */
+.card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* --- Solución para textos oscuros en las tarjetas de producto --- */
+.card-body {
+  color: #f1f1f1 !important; /* Asegura que TODO el texto por defecto sea claro */
+}
+
+.card-title {
+  color: #bb86fc !important;
+}
+
+.card-text, .card-body strong {
+  color: #ffffff !important; /* Asegura que párrafos y textos en negrita (precio) sean blanco puro */
+}
+
+
+.modal-content, .dropdown-menu {
+    background-color: #2c2c2c !important;
+    color: white !important;
+}
+
+.modal-header, .dropdown-divider {
+    border-bottom: 1px solid #444 !important;
+}
+
+.form-control, .form-select {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #333;
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(187, 134, 252, 0.25);
+    border-color: #bb86fc;
+}
+
+.table {
+    color: #f1f1f1 !important;
+}
+
+/* --- Solución para el placeholder 'Buscar producto...' --- */
+.form-control::placeholder {
+  color: #a0a0a0;
+  opacity: 1; /* Evita que el navegador lo haga transparente */
+}
+
+/* --- Solución para el texto del Fabricante en el Modal --- */
+.modal-body .text-muted {
+  color: #adb5bd !important; /* Un gris más claro para textos 'silenciados' */
+}
+
+/* --- Solución para el texto del menú de Perfil (Dropdown) --- */
+.dropdown-menu {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+}
+
+.dropdown-item {
+  color: #f1f1f1;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #121212; /* Texto oscuro para el fondo claro del hover */
+  background-color: #f8f9fa;
+}
