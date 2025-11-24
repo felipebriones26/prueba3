@@ -1,10 +1,8 @@
-// src/services/authService.js
 
 const API_URL = 'http://localhost:8080/api/v1/auth';
 
 export const authService = {
   
-  // 1. Login conectado al Backend
   login: async (username, password) => {
     try {
       const response = await fetch(`${API_URL}/login`, {
@@ -12,21 +10,20 @@ export const authService = {
         headers: {
           'Content-Type': 'application/json'
         },
-        // Tu backend espera "username", asegúrate de enviarlo así
         body: JSON.stringify({ username, password })
       });
 
       if (response.ok) {
         const data = await response.json();
         
-        // Guardamos Token, Usuario y Rol
+        
         localStorage.setItem('jwt_token', data.token);
         localStorage.setItem('usuario_actual', username);
-        localStorage.setItem('user_role', data.role); // Importante para el menú de App.js
+        localStorage.setItem('user_role', data.role); 
         
         return true;
       } else {
-        return false; // Credenciales inválidas
+        return false; 
       }
     } catch (error) {
       console.error("Error de conexión en login:", error);
@@ -34,10 +31,10 @@ export const authService = {
     }
   },
 
-  // 2. Registro conectado al Backend
+  
   register: async (nombre, correo, password) => {
     const usuarioRegistro = {
-      username: correo, // Usamos el correo como username
+      username: correo, 
       email: correo,
       password: password
     };
@@ -56,26 +53,21 @@ export const authService = {
     return await response.json();
   },
 
-  // 3. Logout (Borra todo del navegador)
   logout: () => {
     localStorage.removeItem('jwt_token');
     localStorage.removeItem('usuario_actual');
     localStorage.removeItem('user_role');
-    // Opcional: Redirigir aquí o dejar que App.js lo maneje
   },
 
-  // 4. Obtener usuario actual (Para App.js)
   getCurrentUser: () => {
-    // Devuelve el nombre de usuario si existe, o null si no
+    
     return localStorage.getItem('usuario_actual');
   },
 
-  // 5. Obtener Rol (Útil para componentes protegidos)
   getUserRole: () => {
     return localStorage.getItem('user_role');
   },
   
-  // Método auxiliar para verificar si es Admin
   isAdmin: () => {
       return localStorage.getItem('user_role') === 'ADMINISTRADOR';
   }

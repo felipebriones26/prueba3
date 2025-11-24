@@ -14,7 +14,6 @@ function LoginForm({ show, handleClose }) {
     try {
       const data = await loginUser(username, password);
       
-      // Guardar token, usuario y rol en localStorage
       localStorage.setItem('jwt_token', data.token);
       localStorage.setItem('usuario_actual', username);
       localStorage.setItem('user_role', data.role);

@@ -17,9 +17,6 @@ function RegisterForm({ show, handleClose }) {
     setSuccess('');
     
     try {
-      // --- CORRECCIÓN AQUÍ ---
-      // Antes decía: formData.formData (Error)
-      // Ahora dice:  formData.correo   (Correcto)
       const user = await authService.register(formData.nombre, formData.correo, formData.password);
       
       const descuento = user.descuento || 0;
@@ -30,7 +27,6 @@ function RegisterForm({ show, handleClose }) {
           setSuccess('¡Registro exitoso! Ya puedes iniciar sesión.');
       }
       
-      // Limpiamos el formulario
       setFormData({ nombre: '', correo: '', fechaNacimiento: '', password: '' });
       
     } catch (err) {

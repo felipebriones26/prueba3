@@ -1,22 +1,16 @@
-// karma.conf.js
 module.exports = function(config) {
   config.set({
     frameworks: ['jasmine'],
 
-    // --- CAMBIO 1: AÑADIR setupTests.js ---
-    // Le decimos a Karma que cargue este archivo primero
-    // para que las funciones de testing estén disponibles.
     files: [
       'src/setupTests.js',  
       'src/**/*.spec.js'    
     ],
-    // --- FIN DEL CAMBIO 1 ---
 
     preprocessors: {
       'src/setupTests.js': ['webpack'], 
       'src/**/*.spec.js': ['webpack']
     },
-    // SECCIÓN DE WEBPACK AUTÓNOMA
     webpack: {
       mode: 'development',
       module: {

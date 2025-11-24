@@ -1,21 +1,17 @@
-// src/pages/admin/ProductAdminPage.js
 import React, { useState, useEffect } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// Asegúrate de que productService ya tenga el código nuevo con fetch que te di antes
 import { productService } from '../../services/productService'; 
 
 function ProductAdminPage() {
   const [products, setProducts] = useState([]);
 
-  // --- 1. CARGA DE DATOS ASÍNCRONA ---
   useEffect(() => {
     cargarProductos();
   }, []);
 
   const cargarProductos = async () => {
     try {
-      // Ahora getProducts devuelve una Promesa, hay que esperar (await)
       const data = await productService.getProducts();
       setProducts(data);
     } catch (error) {
@@ -23,12 +19,12 @@ function ProductAdminPage() {
     }
   };
 
-  // --- 2. ELIMINAR CONECTADO AL BACKEND ---
+  
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
       try {
-        await productService.deleteProduct(id); // Llamada al API DELETE
-        cargarProductos(); // Recargar la tabla para ver el cambio
+        await productService.deleteProduct(id); 
+        cargarProductos(); 
       } catch (error) {
         alert("Error al eliminar: " + error.message);
       }
@@ -57,7 +53,7 @@ function ProductAdminPage() {
             <tr key={p.id}>
               <td>{p.id}</td>
               <td>{p.nombre}</td>
-              {/* CORRECCIÓN: Accedemos a p.categoria.nombre con seguridad (?) */}
+              {}
               <td>{p.categoria?.nombre || 'Sin Categoría'}</td>
               <td>${p.precio.toLocaleString('es-CL')}</td>
               <td>

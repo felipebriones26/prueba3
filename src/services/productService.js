@@ -2,7 +2,6 @@ const API_URL = 'http://localhost:8080/api/v1';
 
 export const productService = {
 
-  // 1. Obtener Productos
   getProducts: async () => {
     try {
       const response = await fetch(`${API_URL}/productos`);
@@ -14,7 +13,6 @@ export const productService = {
     }
   },
 
-  // 2. Obtener Categorías (¡NUEVO! - Esto faltaba para el menú)
   getCategories: async () => {
     try {
       const response = await fetch(`${API_URL}/categorias`);
@@ -26,7 +24,6 @@ export const productService = {
     }
   },
 
-  // 3. Crear Producto
   createProduct: async (newProduct) => {
     const token = localStorage.getItem('jwt_token');
     if (!token) throw new Error('No estás autenticado');
@@ -47,7 +44,6 @@ export const productService = {
     return await response.json();
   },
 
-  // 4. Actualizar Producto
   updateProduct: async (id, updatedProduct) => {
     const token = localStorage.getItem('jwt_token');
     if (!token) throw new Error('No estás autenticado');
@@ -68,7 +64,6 @@ export const productService = {
     return await response.json();
   },
 
-  // 5. Eliminar Producto
   deleteProduct: async (id) => {
     const token = localStorage.getItem('jwt_token');
     if (!token) throw new Error('No estás autenticado');
@@ -81,7 +76,6 @@ export const productService = {
     });
 
     if (!response.ok) {
-        // Leemos el error real del backend para saber por qué falló (ej: tiene ventas asociadas)
         const errorText = await response.text();
         throw new Error(errorText || 'No se pudo eliminar el producto.');
     }

@@ -7,7 +7,6 @@ function CheckoutPage({ cartItems, setCartItems }) {
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
-  // Estado para el formulario de envío
   const [formData, setFormData] = useState({
     nombre: '',
     direccion: '',
@@ -15,17 +14,15 @@ function CheckoutPage({ cartItems, setCartItems }) {
     metodoPago: 'credito'
   });
 
-  // Calcular total dinámico
   const total = cartItems.reduce((acc, item) => acc + (item.precio * (item.cantidad || 1)), 0);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // --- NUEVA FUNCIÓN: CAMBIAR CANTIDAD ---
   const handleQuantityChange = (id, newQuantity) => {
     const quantity = parseInt(newQuantity);
-    if (isNaN(quantity) || quantity < 1) return; // Evitar números inválidos o 0
+    if (isNaN(quantity) || quantity < 1) return; 
 
     setCartItems(prevItems => 
       prevItems.map(item => 
@@ -33,7 +30,6 @@ function CheckoutPage({ cartItems, setCartItems }) {
       )
     );
   };
-  // ---------------------------------------
 
   const handleRemoveItem = (id) => {
     setCartItems(prev => prev.filter(item => item.id !== id));
@@ -62,7 +58,6 @@ function CheckoutPage({ cartItems, setCartItems }) {
       
     } catch (err) {
       console.error(err);
-      // Mostramos el mensaje exacto que viene del backend (ej: "Stock insuficiente")
       setError(err.message || "Hubo un error al procesar la compra.");
     }
   };
@@ -74,7 +69,7 @@ function CheckoutPage({ cartItems, setCartItems }) {
       {error && <Alert variant="danger">{error}</Alert>}
 
       <Row>
-        {/* Formulario de Datos */}
+        {}
         <Col md={7}>
           <Card className="shadow-sm mb-4">
             <Card.Header className="bg-primary text-white">Datos de Envío y Pago</Card.Header>
@@ -139,7 +134,7 @@ function CheckoutPage({ cartItems, setCartItems }) {
           </Card>
         </Col>
 
-        {/* Resumen del Carrito con Edición */}
+        {}
         <Col md={5}>
           <Card className="shadow-sm">
             <Card.Header>Resumen del Pedido</Card.Header>
@@ -164,7 +159,7 @@ function CheckoutPage({ cartItems, setCartItems }) {
                             <small className="text-muted">${item.precio.toLocaleString('es-CL')} c/u</small>
                         </td>
                         <td>
-                            {/* Input para editar cantidad */}
+                            {}
                             <Form.Control 
                                 type="number" 
                                 min="1"

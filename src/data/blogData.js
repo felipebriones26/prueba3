@@ -1,4 +1,3 @@
-// src/data/blogData.js
 export const posts = [
   { 
     t: 'Cómo elegir tu primer PC Gamer', 

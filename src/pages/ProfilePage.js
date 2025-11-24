@@ -1,4 +1,3 @@
-// src/pages/ProfilePage.js
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Alert, Card } from 'react-bootstrap';
 import { authService } from '../services/authService';

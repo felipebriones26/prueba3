@@ -19,7 +19,6 @@ describe('Componente ProductCard', () => {
   mockOnShowDetails = jasmine.createSpy('onShowDetails');
  });
 
- // --- PRUEBA 1 (Simple) ---
  it('debe mostrar el nombre y precio del producto pasados por props', () => {
   render(<ProductCard product={mockProduct} onAddToCart={mockOnAddToCart} onShowDetails={mockOnShowDetails} />);
   

@@ -1,4 +1,3 @@
-// src/pages/ProductDetailPage.js
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';

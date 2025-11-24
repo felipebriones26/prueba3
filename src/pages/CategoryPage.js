@@ -1,4 +1,3 @@
-// Archivo: src/pages/CategoryPage.js
 
 import React from 'react';
 import { useParams } from 'react-router-dom';

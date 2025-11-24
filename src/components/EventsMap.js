@@ -1,9 +1,8 @@
-// src/components/EventsMap.js
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css'; // Importa los estilos de Leaflet
+import 'leaflet/dist/leaflet.css'; 
 
-// Corrige un problema común con los íconos de los marcadores en React
+
 import L from 'leaflet';
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -13,9 +12,8 @@ L.Icon.Default.mergeOptions({
 });
 
 
-//mishh
 function EventsMap() {
-  const position = [-33.45, -70.66]; // Coordenadas para centrar el mapa (Santiago)
+  const position = [-33.45, -70.66]; 
   const eventos = [
     { nombre: 'Santiago Game Fest', coord: [-33.45, -70.66] },
     { nombre: 'Valpo eSports Meet', coord: [-33.047, -71.612] },

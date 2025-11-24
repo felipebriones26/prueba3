@@ -1,4 +1,3 @@
-// Archivo: src/data/productos.js
 
 export const productos = {
   juegos: [

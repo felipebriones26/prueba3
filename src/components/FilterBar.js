@@ -1,4 +1,3 @@
-// src/components/FilterBar.js
 import React from 'react';
 import { Row, Col, Form, InputGroup } from 'react-bootstrap';
 
@@ -27,7 +26,7 @@ function FilterBar({ filters, setFilters }) {
           <option value="juegos">Juegos de Mesa</option>
           <option value="accesorios">Accesorios</option>
           <option value="consolas">Consolas</option>
-          {/* Agrega todas tus categorías */}
+          {}
         </Form.Select>
       </Col>
       <Col md={3}>

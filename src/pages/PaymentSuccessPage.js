@@ -1,4 +1,3 @@
-// src/pages/PaymentSuccessPage.js
 import React from 'react';
 import { Alert, Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

@@ -1,7 +1,7 @@
-// src/components/BlogSection.js
+
 import React from 'react';
 import { Row, Col, Card, Badge } from 'react-bootstrap';
-import { posts } from '../data/blogData'; // Importamos los datos del blog
+import { posts } from '../data/blogData'; 
 
 function BlogSection() {
   return (

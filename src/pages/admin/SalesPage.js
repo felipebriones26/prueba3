@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Container, Alert } from 'react-bootstrap';
-import { getVentas } from '../../services/api'; // Asegúrate de que esta función exista en api.js
+import { getVentas } from '../../services/api'; 
 
 function SalesPage() {
   const [ventas, setVentas] = useState([]);

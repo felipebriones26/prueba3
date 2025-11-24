@@ -14,21 +14,20 @@ import ProfilePage from './pages/ProfilePage';
 import ProductAdminPage from './pages/admin/ProductAdminPage';
 import ProductEditPage from './pages/admin/ProductEditPage';
 import ProtectedRoute from './components/ProtectedRoute';
-import SalesPage from './pages/admin/SalesPage'; // Importar la página nueva
+import SalesPage from './pages/admin/SalesPage'; 
 
 import './App.css';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [userRole, setUserRole] = useState(null); // Estado para guardar el rol
+  const [userRole, setUserRole] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
-  // Cargar sesión al iniciar
   useEffect(() => {
     const user = localStorage.getItem('usuario_actual');
-    const role = localStorage.getItem('user_role'); // Leemos el rol guardado
+    const role = localStorage.getItem('user_role'); 
     if (user) {
       setCurrentUser(user);
       setUserRole(role);
@@ -44,7 +43,6 @@ function App() {
     window.location.href = '/';
   };
 
-  // Lógica del carrito (simplificada para el ejemplo)
   const handleAddToCart = (productToAdd) => {
       setCartItems(prevItems => {
         const isItemInCart = prevItems.find(item => item.id === productToAdd.id);
@@ -72,12 +70,10 @@ function App() {
                 <Nav.Link as={NavLink} to="/" end>Productos</Nav.Link>
                 <Nav.Link as={NavLink} to="/checkout">Carrito ({cartItems.length})</Nav.Link>
                 
-                {/* Menú solo para ADMINISTRADOR (Gestión total) */}
                 {userRole === 'ADMINISTRADOR' && (
                   <Nav.Link as={NavLink} to="/admin/productos">Administrar Productos</Nav.Link>
                 )}
 
-                {/* Menú para VENDEDOR y ADMIN (Ver Ventas) */}
                 {(userRole === 'VENDEDOR' || userRole === 'ADMINISTRADOR') && (
                    <Nav.Link as={NavLink} to="/admin/ventas">Ver Ventas</Nav.Link>
                 )}
@@ -108,8 +104,8 @@ function App() {
             <Route path="/pago-exitoso" element={<PaymentSuccessPage />} />
             <Route path="/perfil" element={<ProfilePage />} />
 
-            {/* Rutas Protegidas */}
-            {/* Solo Admin puede entrar a gestión de productos */}
+          
+            
             <Route path="/admin/productos" element={
                 userRole === 'ADMINISTRADOR' ? <ProductAdminPage /> : <HomePage />
             } />
@@ -120,7 +116,7 @@ function App() {
                 userRole === 'ADMINISTRADOR' ? <ProductEditPage /> : <HomePage />
             } />
             
-            {/* Admin y Vendedor pueden ver ventas */}
+            {}
             <Route path="/admin/ventas" element={
                 (userRole === 'ADMINISTRADOR' || userRole === 'VENDEDOR') ? <SalesPage /> : <HomePage />
             } />

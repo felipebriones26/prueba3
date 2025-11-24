@@ -1,9 +1,7 @@
-// src/components/ProductDetailModal.js
 import React from 'react';
 import { Modal, Button, Image, Badge } from 'react-bootstrap';
 
 function ProductDetailModal({ product, handleClose }) {
-  // Si no hay producto seleccionado, no renderiza nada
   if (!product) {
     return null;
   }

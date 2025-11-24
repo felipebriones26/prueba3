@@ -15,23 +15,20 @@ function ProductEditPage() {
     stock: 0,
     imagen: '',
     fabricante: '',
-    categoriaId: '' // Empezamos vacío, se llenará al cargar categorías
+    categoriaId: '' 
   });
 
-  const [categories, setCategories] = useState([]); // Para guardar las categorías de la BD
+  const [categories, setCategories] = useState([]); 
   const [error, setError] = useState('');
 
   useEffect(() => {
     const cargarDatos = async () => {
       try {
-        // 1. Cargar Categorías PRIMERO
         const cats = await productService.getCategories();
         setCategories(cats);
 
-        // Si es crear nuevo, ponemos la primera categoría por defecto para que no quede vacío
         let catIdPorDefecto = cats.length > 0 ? cats[0].id : '';
 
-        // 2. Si es edición, cargar el producto
         if (isEditing) {
           const products = await productService.getProducts();
           const product = products.find(p => p.id === parseInt(id));
@@ -44,12 +41,10 @@ function ProductEditPage() {
               stock: product.stock || 0,
               imagen: product.imagen || '',
               fabricante: product.fabricante || '',
-              // Usamos el ID de la categoría del producto, o el por defecto
               categoriaId: product.categoria?.id || catIdPorDefecto
             });
           }
         } else {
-            // Si es nuevo, seteamos la categoría por defecto
             setFormData(prev => ({ ...prev, categoriaId: catIdPorDefecto }));
         }
       } catch (err) {
@@ -69,8 +64,6 @@ function ProductEditPage() {
     e.preventDefault();
     setError('');
 
-    // Preparamos el objeto. 
-    // IMPORTANTE: NO incluimos 'id' al crear (el backend lo hace autoincremental)
     const productoParaEnviar = {
       nombre: formData.nombre,
       descripcion: formData.descripcion,
@@ -78,7 +71,6 @@ function ProductEditPage() {
       stock: parseInt(formData.stock),
       imagen: formData.imagen,
       fabricante: formData.fabricante,
-      // El backend espera un objeto { id: X } para la categoría
       categoria: { id: parseInt(formData.categoriaId) } 
     };
 
@@ -141,7 +133,7 @@ function ProductEditPage() {
 
         <Form.Group className="mb-3">
           <Form.Label>Categoría</Form.Label>
-          {/* CAMBIO CLAVE: Usamos un Select en vez de un input de texto */}
+          {}
           <Form.Select name="categoriaId" value={formData.categoriaId} onChange={handleChange} required>
             {categories.map(cat => (
                 <option key={cat.id} value={cat.id}>
